@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -22,25 +24,25 @@ public class RelativeLocatorDemo {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-           WebElement element= (WebElement) RelativeLocator.with(By.tagName("input")).above(By.name("password"));
+            Thread.sleep(6000);
+           WebElement element = driver.findElement(RelativeLocator.with(By.tagName("input")).above(By.name("password")));
             highlightElementWithBox(element,driver);
-           element.sendKeys("TestDemo");
-
-          /*  element.sendKeys("Test Verification");
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            WebElement element1 = shadow.findElementByXPath("//input[@type='checkbox']");
+           element.sendKeys("Admin");
+           WebElement element1= driver.findElement(RelativeLocator.with(By.tagName("input")).below(By.name("username")));
             highlightElementWithBox(element1,driver);
-            element1.click();
+            element1.sendKeys("admin123");
+            WebElement element2=driver.findElement(RelativeLocator.with(By.tagName("button")).below(By.name("username")));
+            highlightElementWithBox(element2,driver);
+            element2.click();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.quit();
 
-             */
         }
         catch (Exception e){
             log.error(e.getMessage(),e);
+            driver.quit();
         }
     }
 
@@ -53,5 +55,15 @@ public class RelativeLocatorDemo {
             log.error(e.getMessage());
             throw e;
         }
+    }
+
+    public void pageLoadWait(WebDriver driver) {
+
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until((ExpectedCondition<Boolean>) webDriver ->
+                (Boolean) ((JavascriptExecutor) webDriver).executeScript("return (window.jQuery != null) ? jQuery.active === 0 : true"));
+        log.debug("xhr ready");
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(webDriver ->
+                ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        log.debug("html ready");
     }
 }
