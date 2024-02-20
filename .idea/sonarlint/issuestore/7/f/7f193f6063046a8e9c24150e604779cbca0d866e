@@ -1,0 +1,7 @@
+
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËıÁü8ÆğÙÙÛ1
+X	java:S125"<This block of commented-out lines of code should be removed.(œ¢Áã8ÉğÙÙÛ1
+>
+java:S11162"Remove this empty statement.(íÌ“èşÿÿÿÿ8ÌğÙÙÛ1
+c
+java:S10755"ARefactor your code to get this URI from a customizable parameter.(ãœÏïøÿÿÿÿ8ÎğÙÙÛ1

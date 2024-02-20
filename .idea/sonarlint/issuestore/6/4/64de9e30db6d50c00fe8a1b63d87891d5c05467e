@@ -1,0 +1,7 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(É§¸Èüÿÿÿÿ8¢öóØÛ1
+g	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(†ëÙ§ûÿÿÿÿ8¥öóØÛ1
+N
+java:S3011",This accessibility update should be removed.(ã÷‡şûÿÿÿÿ8»öóØÛ1
+
+java:S1130!"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(†ëÙ§ûÿÿÿÿ8ÀöóØÛ1
